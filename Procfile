@@ -1,2 +1,2 @@
 web: node server.js
-release: adonis migration:run
+release: node ace migration:run
