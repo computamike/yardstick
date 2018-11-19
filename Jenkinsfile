@@ -7,8 +7,8 @@ pipeline {
         SAFE_BRANCH_NAME = '${BRANCH_NAME}'
       }
       steps {
-        deleteDir()
-        SAFE_BRANCH_NAME = sh(returnStdout: true, script:'BRANCH_NAME.replace(".", "_").replaceAll('/', '_').replaceAll('-', '_')')
+        deleteDir() 
+        echo sh(returnStdout: true, script:'echo $BRANCH_NAME | SED "/\./\_/g"')
         echo sh(returnStdout: true, script: 'env')
     
         
