@@ -37,6 +37,6 @@ pipeline {
     }
   }
   environment {
-    SAFE_BRANCH_NAME = 'test'
+    SAFE_BRANCH_NAME = "TEST_${BRANCH_NAME}${BUILD_ID}"
   }
 }
