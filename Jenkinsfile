@@ -11,7 +11,7 @@ pipeline {
         slackSend(message: ':building_construction: Started Build: YARDSTICK ${env.BRANCH_NAME} #${env.BUILD_NUMBER}', botUser: true, channel: '#jenkins', color: 'warn')
         deleteDir()
         echo sh(returnStdout: true, script: 'env')
-        sh 'SAFE_BRANCH_NAME = BRANCH_NAME.replace(".", "_").replaceAll(\'/\', \'_\').replaceAll(\'-\', \'_\')'
+        sh (returnStdout: true, script: 'BRANCH_NAME.replace(".", "_").replaceAll(\'/\', \'_\').replaceAll(\'-\', \'_\')')
         sh 'mysql -u root -p1234 -e "DROP DATABASE IF EXISTS highstreet_${SAFE_BRANCH_NAME}_${BUILD_NUMBER}"'
       }
     }
