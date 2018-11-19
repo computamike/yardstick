@@ -7,6 +7,15 @@ pipeline {
   }
   stages {
     stage('Checkout') {
+      agent {
+        node {
+          label 'master'
+        }
+
+      }
+      environment {
+        SAFE_BRANCH_NAME = '${BRANCH_NAME}'
+      }
       steps {
         deleteDir()
         echo sh(returnStdout: true, script: 'env')
