@@ -7,12 +7,7 @@ pipeline {
   }
   stages {
     stage('Checkout') {
-      agent {
-        node {
-          label 'master'
-        }
-
-      }
+      agent any
       environment {
         SAFE_BRANCH_NAME = '${BRANCH_NAME}'
       }
