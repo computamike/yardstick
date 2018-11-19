@@ -12,6 +12,8 @@ pipeline {
         echo sh(returnStdout: true, script: 'env')
         sh '${sh(returnStdout: true, script: "SAFE_BRANCH_NAME=\\"my value\\"")}'
         echo '${sh(returnStdout: true, script: \'env\')}'
+        sh 'export AWESOME_FILE=$SAFE_BRANCH_NAME/the_file'
+        echo sh(returnStdout: true, script: 'env')
         sh(returnStdout: true, script: '''#!/bin/bash
 SAFE_BRANCH_NAME = "Hello"''')
       }
