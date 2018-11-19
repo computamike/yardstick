@@ -9,7 +9,7 @@ pipeline {
       steps {
         deleteDir()
         echo sh(returnStdout: true, script: 'env')
-        sh '$BRANCH_NAME | sed \'/\\./\\_/g\''
+        sh 'echo $BRANCH_NAME | sed \'/\\./\\_/g\''
       }
     }
     stage('Build') {
