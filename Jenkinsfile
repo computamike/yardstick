@@ -8,7 +8,6 @@ pipeline {
       }
       steps {
         deleteDir() 
-        echo sh(returnStdout: true, script:'echo $BRANCH_NAME | SED "/\./\_/g"')
         echo sh(returnStdout: true, script: 'env')
     
         
