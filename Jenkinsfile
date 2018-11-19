@@ -11,6 +11,7 @@ pipeline {
         slackSend(message: ':building_construction: Started Build: YARDSTICK ${env.BRANCH_NAME} #${env.BUILD_NUMBER}', botUser: true, channel: '#jenkins', color: 'warn')
         deleteDir()
         echo sh(returnStdout: true, script: 'env')
+        sh 'SAFE_BRANCH_NAME = "HELLO"'
         sh(returnStdout: true, script: 'SAFE_BRANCH_NAME = ${BRANCH_NAME//./_}')
         sh '"SAFE_BRANCH_NAME = ${SAFE_BRANCH_NAME////_}"'
         sh 'SAFE_BRANCH_NAME = ${SAFE_BRANCH_NAME//-/_}'
