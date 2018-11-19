@@ -36,4 +36,7 @@ pipeline {
       }
     }
   }
+  environment {
+    SAFE_BRANCH_NAME = 'test'
+  }
 }
