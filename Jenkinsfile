@@ -10,7 +10,7 @@ pipeline {
       steps {
         deleteDir()
         echo sh(returnStdout: true, script: 'env')
-        sh '${sh(returnStdout: true, script: "export SAFE_BRANCH_NAME = Hello")}'
+        sh '${sh(returnStdout: true, script: "SAFE_BRANCH_NAME=\'my value\'")}'
         echo '${sh(returnStdout: true, script: \'env\')}'
         sh(returnStdout: true, script: 'SAFE_BRANCH_NAME = ${BRANCH_NAME//./_}')
         sh '"SAFE_BRANCH_NAME = ${SAFE_BRANCH_NAME////_}"'
