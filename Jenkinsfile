@@ -9,10 +9,6 @@ pipeline {
       steps {
         deleteDir()
         echo sh(returnStdout: true, script: 'env')
-        sh '${sh(returnStdout: true, script: "SAFE_BRANCH_NAME=\\"my value\\"")}'
-        echo '${sh(returnStdout: true, script: \'env\')}'
-        sh 'export AWESOME_FILE=$SAFE_BRANCH_NAME/the_file'
-        echo sh(returnStdout: true, script: 'env')
       }
     }
     stage('Build') {
@@ -37,6 +33,6 @@ pipeline {
     }
   }
   environment {
-    SAFE_BRANCH_NAME = "TEST_${BRANCH_NAME}${BUILD_ID}"
+    SAFE_BRANCH_NAME = TEST_${BRANCH_NAME}${BUILD_ID}
   }
 }
