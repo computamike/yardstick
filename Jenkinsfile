@@ -32,7 +32,4 @@ pipeline {
       }
     }
   }
-  environment {
-    SAFE_BRANCH_NAME = TEST{BRANCH_NAME}${BUILD_ID}
-  }
 }
