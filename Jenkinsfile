@@ -7,11 +7,9 @@ pipeline {
         SAFE_BRANCH_NAME = '${BRANCH_NAME}'
       }
       steps {
-        deleteDir() 
+        deleteDir()
         echo sh(returnStdout: true, script: 'env')
-    
-        
-        
+        sh 'echo $BRANCH_NAME | sed "/\\./\\_/g"'
       }
     }
     stage('Build') {
