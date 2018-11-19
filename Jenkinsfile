@@ -12,8 +12,8 @@ pipeline {
         deleteDir()
         echo sh(returnStdout: true, script: 'env')
         sh(returnStdout: true, script: 'SAFE_BRANCH_NAME = ${BRANCH_NAME//./_}')
-        sh '''SAFE_BRANCH_NAME = ${SAFE_BRANCH_NAME////_}
-$SA(replaceAll(\'/\', \'_\').replaceAll(\'-\', \'_\')'''
+        sh '''"SAFE_BRANCH_NAME = ${SAFE_BRANCH_NAME////_}
+$SA(replaceAll(\'/\', \'_\').replaceAll(\'-\', \'_\')"'''
         sh 'SAFE_BRANCH_NAME = ${SAFE_BRANCH_NAME//-/_}'
         sh 'mysql -u root -p1234 -e "DROP DATABASE IF EXISTS highstreet_${SAFE_BRANCH_NAME}_${BUILD_NUMBER}"'
       }
