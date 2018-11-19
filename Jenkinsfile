@@ -11,6 +11,7 @@ pipeline {
         slackSend(message: ':building_construction: Started Build: UID ${env.BRANCH_NAME} #${env.BUILD_NUMBER}', botUser: true, channel: '#jenkins', color: 'warn')
         deleteDir()
         echo sh(returnStdout: true, script: 'env')
+        powershell(script: 'env', returnStdout: true)
       }
     }
     stage('Build') {
