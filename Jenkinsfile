@@ -8,6 +8,7 @@ pipeline {
       }
       steps {
         deleteDir()
+        SAFE_BRANCH_NAME = BRANCH_NAME.replace(".", "_").replaceAll('/', '_').replaceAll('-', '_')
         echo sh(returnStdout: true, script: 'env')
       }
     }
