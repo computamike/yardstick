@@ -11,8 +11,6 @@ pipeline {
         slackSend(message: ':building_construction: Started Build: UID ${env.BRANCH_NAME} #${env.BUILD_NUMBER}', botUser: true, channel: '#jenkins', color: 'warn')
         deleteDir()
         sh 'echo sh(returnStdout: true, script: \'env\')'
-        sh 'SAFE_BRANCH_NAME = BRANCH_NAME.replace(".", "_").replaceAll(\'/\', \'_\').replaceAll(\'-\', \'_\')'
-        sh 'sh "mysql -u root -p1234 -e \\"DROP DATABASE IF EXISTS unidentified_post_${SAFE_BRANCH_NAME}_${BUILD_NUMBER}\\""'
       }
     }
     stage('Build') {
