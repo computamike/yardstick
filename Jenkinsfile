@@ -12,7 +12,8 @@ pipeline {
         echo sh(returnStdout: true, script: 'env')
         sh '${sh(returnStdout: true, script: "SAFE_BRANCH_NAME=\\"my value\\"")}'
         echo '${sh(returnStdout: true, script: \'env\')}'
-        sh(returnStdout: true, script: 'SAFE_BRANCH_NAME = ${BRANCH_NAME//./_}')
+        sh(returnStdout: true, script: '''#!/bin/bash
+SAFE_BRANCH_NAME = "Hello"''')
         sh '"SAFE_BRANCH_NAME = ${SAFE_BRANCH_NAME////_}"'
         sh 'SAFE_BRANCH_NAME = ${SAFE_BRANCH_NAME//-/_}'
         sh 'mysql -u root -p1234 -e "DROP DATABASE IF EXISTS highstreet_${SAFE_BRANCH_NAME}_${BUILD_NUMBER}"'
